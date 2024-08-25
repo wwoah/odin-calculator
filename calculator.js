@@ -6,26 +6,34 @@ function sub(a,b){ return `${a-b}` };
 //Multiplication
 function mult(a,b){ return `${a*b}` };
 //Divsion
-function div(a,b){ return (b == 0 ? 'Cannot Divide By Zero' : `${a/b}`);}
+function div(a,b){ return (b == 0 ? 'Nice Try' : `${(a/b).toFixed(3)}`);}
 
-//Operate function
+//Operate function that takes in string input from a form
 function operate(expr) {
-    //expression is received as a string
-    //console.log(expr);
-    let exprArr = expr.split(/([0-9]+)/);
+    console.log(expr);
+    let exprArr = expr.split(/[\+\-\*\/]/);
+    let opIndex = expr.search(/[\+\-\*\/]/);
     console.log(exprArr);
+    console.log(`${opIndex} : ${expr[opIndex]}`);
 
-    //break the string into a 
-    switch(exprArr[2]) {
+
+    switch(expr[opIndex]) {
         case '+':
-          return add(+exprArr[1],+exprArr[3]);
+          return add(+exprArr[0],+exprArr[1]);
         case '-':
-            return sub(+exprArr[1],+exprArr[3]);
+            return sub(+exprArr[0],+exprArr[1]);
         case '*':
-            return mult(+exprArr[1],+exprArr[3]);
+            return mult(+exprArr[0],+exprArr[1]);
         case '/':
-            return div(+exprArr[1],+exprArr[3]);
+            return div(+exprArr[0],+exprArr[1]);
         default:
             return '';
     }
 }
+
+//Load layout of Keyboard for Calculator
+
+
+
+
+//Dynamically place the keys
